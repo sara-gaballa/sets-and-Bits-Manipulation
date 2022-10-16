@@ -63,26 +63,34 @@ int32_t main() {
     cin.tie(0),iostream::sync_with_stdio(0);
     string statement,part_number;
     int number,position;
-    cout <<"press (1) for part1 or (2) for part2 or (3) for part3: "<<endl;
+    cout <<"press (1) for part1 or (2) for part2 or (3) for part3 or (0) for Exit: "<<endl;
     cin>>part_number;
 
+    while(part_number!="0"){
+
     if(part_number=="1"){
-    cout<<"choose{get,set,clear,update}"<<endl;
+
+    cout<<"choose{get,set,clear,update,exit}"<<endl;
     cin >> statement;
+    while(statement!="exit"){
     cout<<"Enter number and position"<<endl;
     cin >> number;
     cin >> position;
     if(statement=="set"){
-    cout << setBit(number,position);system("pause");}
+    cout << setBit(number,position);}
     else if(statement=="clear"){
-    cout << clearBit(number,position);system("pause");}
+    cout << clearBit(number,position);}
     else if(statement=="get"){
-    cout << getBit(number,position);system("pause");}
+    cout << getBit(number,position);}
     else if(statement=="update"){
         cout<<"enter the update value"<<endl;
         bool value;
         cin>> value;
-        cout << updateBit(number,position,value);system("pause");}
+        cout << updateBit(number,position,value);}
+    cout<<"\nchoose{get,set,clear,update,exit}"<<endl;
+    cin >> statement;
+    }
+
     }
 
 
@@ -133,17 +141,16 @@ int32_t main() {
         if(number_of_sets!=0){
         cout << "Enter the next subset elements(if the subset is null enter NULL)" <<endl;}
         }
-        cout << "Enter 1 for Union or 2 for intersection or 3 for complement " <<endl;
+        cout << "Enter 1 for Union or 2 for intersection or 3 for complement or 0 for exit" <<endl;
         string chose;
         cin >> chose;
-
+        while(chose!="0"){
         if(chose == "1"){
             int firstsubset,secondsubset;
             cout << "Enter number of 2 subsets to get union " <<endl;
             cin >> firstsubset;
             cin >> secondsubset;
             Union_of_two_sets(universal,Size, arrss, firstsubset, secondsubset);
-            system("pause");
         }
 
         if(chose == "2"){
@@ -152,7 +159,6 @@ int32_t main() {
             cin >> firstsubset;
             cin >> secondsubset;
             Intersection_of_two_sets(universal,Size, arrss, firstsubset, secondsubset);
-            system("pause");
         }
 
         if(chose == "3"){
@@ -160,11 +166,17 @@ int32_t main() {
             cout << "Enter number of the subset to get the complement " <<endl;
             cin >> subset;
             complement_of_sets(universal, Size , arrss, subset);
-            system("pause");
         }
-
+        cout << "\nEnter 1 for Union or 2 for intersection or 3 for complement or 0 for exit" <<endl;
+        cin >> chose;
+        }
 }
+
     else if(part_number=="3"){
+        cout << "1 for Enter the elements of array , 0 for exit" <<endl;
+        int input;
+        cin >> input;
+        while(input!=0){
         cout << "Enter the elements of array:" <<endl;
         int arr[1000];
         int elements,i=0;
@@ -177,7 +189,13 @@ int32_t main() {
         arr[i]=elements;
         i++;
         cout << "the single number is: " << bits_manipulation(arr, i) << endl;
-        system("pause");
+        cout << "1 for Enter the elements of array , 0 for exit" <<endl;
+        cin >> input;
+    }
+
+    }
+    cout <<"\npress (1) for part1 or (2) for part2 or (3) for part3 or (0) for Exit: "<<endl;
+    cin >> part_number;
     }
 }
 
