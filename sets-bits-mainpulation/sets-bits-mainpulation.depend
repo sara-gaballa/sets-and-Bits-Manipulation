@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1665895587 source:d:\cse25\second year\discreate mathematics\lab-1\sets-and-bits-manipulation-\sets-bits-mainpulation\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
