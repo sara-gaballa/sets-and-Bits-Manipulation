@@ -34,19 +34,19 @@ string* print(string arr[],int Size,int solution){
     return arrreturn;
 }
 string* Union_of_two_sets(string universal[],int Size ,int arrss[],int firstsubset,int secondsubset){
-    int solution = arrss[firstsubset-1]|arrss[secondsubset-1];
+    int solution = arrss[firstsubset]|arrss[secondsubset];
     return print(universal, Size, solution);
 
 }
 
 string* Intersection_of_two_sets(string universal[],int Size ,int arrss[],int firstsubset,int secondsubset){
-    int solution = arrss[firstsubset-1]&arrss[secondsubset-1];
+    int solution = arrss[firstsubset]&arrss[secondsubset];
     return print(universal, Size, solution);
 
 }
 
 string* complement_of_sets(string universal[],int Size ,int arrss[],int subset){
-    int solution = ~arrss[subset-1];
+    int solution = ~arrss[subset];
     return print(universal, Size, solution);
 
 }
