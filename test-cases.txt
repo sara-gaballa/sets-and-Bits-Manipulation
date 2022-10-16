@@ -1,0 +1,12 @@
+//part-1
+get
+2
+0
+
+o>0
+clear
+5
+3
+
+o>1
+set
