@@ -71,8 +71,6 @@ int bits_manipulation(int arr[], int Size){
 
 int32_t main() {
 
-    string statement,part_number;
-    int number,position;
 
     system("cls");
     cout << CYAN <<"press (1) for part1" RESET ;
@@ -83,6 +81,7 @@ int32_t main() {
     cout <<" or ";
     cout << RED <<"(0) for Exit: "RESET;
 
+    string part_number;
     cin>>part_number;
 
     while(part_number!="0"){
@@ -101,9 +100,11 @@ int32_t main() {
     cout <<RED"exit"RESET;
     cout <<"} : ";
 
+    string statement;
     cin >> statement;
     while(statement!="exit"){
     cout<<"Enter number and position"<<endl;
+    int number,position;
     cin >> number;
     cin >> position;
     if(statement=="set"){
@@ -135,10 +136,12 @@ int32_t main() {
 
 
     else if(part_number=="2"){
-        int numberofsets,Size=0;
+
         string Universal_elements;
         string universal[1000];
+        int Size=0;
         cout << "Enter the Universal set elements: " <<endl;
+
         cin >>Universal_elements;
             while(cin.get()!= '\n'){
                 universal[Size]=Universal_elements;
@@ -149,29 +152,30 @@ int32_t main() {
         Size++;
         int bits=pow(2,Size)-1;
         cout << "Enter number of subsets: " <<endl;
+        int numberofsets;
         cin>>numberofsets;
-        int arrss[numberofsets];
+        int ArrSets[numberofsets];
         int number_of_sets = numberofsets;
         int sets_number=0;
-        arrss[sets_number]=bits;
+        ArrSets[sets_number]=bits; //the first set in ArrSets is universal sorted as binary
         sets_number++;
         cout << "Enter the subset elements";
         cout<<RED" (if the subset is null enter NULL): "RESET;
         for (int j = 0; j < numberofsets; j++) {
-           arrss[sets_number]=0;
+           ArrSets[sets_number]=0;
            while(1){
                 string set_input;
                 cin>>set_input;
                 if(set_input!="NULL"){
                     for (int k = 0; k<Size; k++) {
                         if(set_input==universal[k]){
-                            arrss[sets_number]=setBit(arrss[sets_number],Size-1-k);
+                            ArrSets[sets_number]=setBit(ArrSets[sets_number],Size-1-k);//1 2 3 4 5 //5 4 1 //   1 0 0 1 1
                         break;
                         }
                     }
                 }
                 else if(set_input=="NULL"){
-                    arrss[sets_number]=bits;
+                    ArrSets[sets_number]=0<<Size;
                 }
             if(cin.get()== '\n'){
                 break;
@@ -202,7 +206,7 @@ int32_t main() {
             cin >> firstsubset;
             cin >> secondsubset;
             cout << "THE OUTPUT: ";
-            Union_of_two_sets(universal,Size, arrss, firstsubset, secondsubset);
+            Union_of_two_sets(universal,Size, ArrSets, firstsubset, secondsubset);
         }
 
         if(chose == "2"){
@@ -213,7 +217,7 @@ int32_t main() {
             cin >> firstsubset;
             cin >> secondsubset;
             cout << "THE OUTPUT: ";
-            Intersection_of_two_sets(universal,Size, arrss, firstsubset, secondsubset);
+            Intersection_of_two_sets(universal,Size, ArrSets, firstsubset, secondsubset);
         }
 
         if(chose == "3"){
@@ -223,7 +227,7 @@ int32_t main() {
             cout << " : ";
             cin >> subset;
             cout << "THE OUTPUT: ";
-            complement_of_sets(universal, Size , arrss, subset);
+            complement_of_sets(universal, Size , ArrSets, subset);
         }
         cout << GREEN"\nEnter 1 for Union"RESET;
         cout <<" or ";
