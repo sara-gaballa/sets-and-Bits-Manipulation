@@ -1,6 +1,16 @@
 #include <iostream>
+#include <windows.h>
 #include<bits/stdc++.h>
 #define int long long
+#define RESET   "\033[0m"
+#define RED     "\033[31m"      /* Red */
+#define GREEN   "\033[32m"      /* Green */
+#define YELLOW  "\033[33m"      /* Yellow */
+#define BLUE    "\033[34m"      /* Blue */
+#define MAGENTA "\033[35m"      /* Magenta */
+#define CYAN    "\033[36m"      /* Cyan */
+
+
 using namespace std;
 //part-1
 int getBit(int number,int position){
@@ -60,17 +70,37 @@ int bits_manipulation(int arr[], int Size){
 }
 
 int32_t main() {
-    cin.tie(0),iostream::sync_with_stdio(0);
+
     string statement,part_number;
     int number,position;
-    cout <<"press (1) for part1 or (2) for part2 or (3) for part3 or (0) for Exit: "<<endl;
+
+    system("cls");
+    cout << CYAN <<"press (1) for part1" RESET ;
+    cout <<" or ";
+    cout <<BLUE<<"(2) for part2"RESET;
+    cout <<" or ";
+    cout << YELLOW <<"(3) for part3"RESET;
+    cout <<" or ";
+    cout << RED <<"(0) for Exit: "RESET;
+
     cin>>part_number;
 
     while(part_number!="0"){
 
     if(part_number=="1"){
 
-    cout<<"choose{get,set,clear,update,exit}"<<endl;
+    cout<<"choose{";
+    cout <<GREEN"get"RESET;
+    cout <<", ";
+    cout <<YELLOW"set"RESET;
+    cout <<", ";
+    cout <<BLUE"clear"RESET;
+    cout <<", ";
+    cout <<MAGENTA"update"RESET;
+    cout <<", ";
+    cout <<RED"exit"RESET;
+    cout <<"} : ";
+
     cin >> statement;
     while(statement!="exit"){
     cout<<"Enter number and position"<<endl;
@@ -87,7 +117,17 @@ int32_t main() {
         bool value;
         cin>> value;
         cout << updateBit(number,position,value);}
-    cout<<"\nchoose{get,set,clear,update,exit}"<<endl;
+    cout<<"\nchoose{";
+    cout <<GREEN"get"RESET;
+    cout <<", ";
+    cout <<YELLOW"set"RESET;
+    cout <<", ";
+    cout <<BLUE"clear"RESET;
+    cout <<", ";
+    cout <<MAGENTA"update"RESET;
+    cout <<", ";
+    cout <<RED"exit"RESET;
+    cout <<"} : ";
     cin >> statement;
     }
 
@@ -97,7 +137,7 @@ int32_t main() {
     else if(part_number=="2"){
         int numberofsets,Size=0;
         string Universal_elements;
-        string universal[1000],subset[1000];
+        string universal[1000];
         cout << "Enter the Universal set elements: " <<endl;
         cin >>Universal_elements;
             while(cin.get()!= '\n'){
@@ -115,7 +155,8 @@ int32_t main() {
         int sets_number=0;
         arrss[sets_number]=bits;
         sets_number++;
-        cout << "Enter the subset elements(if the subset is null enter NULL)" <<endl;
+        cout << "Enter the subset elements";
+        cout<<RED" (if the subset is null enter NULL): "RESET;
         for (int j = 0; j < numberofsets; j++) {
            arrss[sets_number]=0;
            while(1){
@@ -139,41 +180,66 @@ int32_t main() {
         sets_number++;
         number_of_sets--;
         if(number_of_sets!=0){
-        cout << "Enter the next subset elements(if the subset is null enter NULL)" <<endl;}
+        cout << "Enter the next subset elements";
+        cout<<RED" (if the subset is null enter NULL): "RESET;}
         }
-        cout << "Enter 1 for Union or 2 for intersection or 3 for complement or 0 for exit" <<endl;
+        cout << GREEN"Enter 1 for Union"RESET;
+        cout <<" or ";
+        cout << YELLOW"2 for Intersection"RESET;
+        cout <<" or ";
+        cout << BLUE"3 for Complement"RESET;
+        cout <<" or ";
+        cout << RED"0 for Exit"RESET;
+        cout <<" : ";
         string chose;
         cin >> chose;
         while(chose!="0"){
         if(chose == "1"){
             int firstsubset,secondsubset;
-            cout << "Enter number of 2 subsets to get union " <<endl;
+            cout << "Enter number of 2 subsets to get " ;
+            cout <<GREEN"Union"RESET;
+            cout << " : ";
             cin >> firstsubset;
             cin >> secondsubset;
+            cout << "THE OUTPUT: ";
             Union_of_two_sets(universal,Size, arrss, firstsubset, secondsubset);
         }
 
         if(chose == "2"){
             int firstsubset,secondsubset;
-            cout << "Enter number of 2 subsets to get intersection " <<endl;
+            cout << "Enter number of 2 subsets to get " ;
+            cout <<YELLOW"Intersection"RESET;
+            cout << " : ";
             cin >> firstsubset;
             cin >> secondsubset;
+            cout << "THE OUTPUT: ";
             Intersection_of_two_sets(universal,Size, arrss, firstsubset, secondsubset);
         }
 
         if(chose == "3"){
             int subset;
-            cout << "Enter number of the subset to get the complement " <<endl;
+            cout << "Enter number of the subset to get " ;
+            cout << BLUE"The Complement"RESET;
+            cout << " : ";
             cin >> subset;
+            cout << "THE OUTPUT: ";
             complement_of_sets(universal, Size , arrss, subset);
         }
-        cout << "\nEnter 1 for Union or 2 for intersection or 3 for complement or 0 for exit" <<endl;
+        cout << GREEN"\nEnter 1 for Union"RESET;
+        cout <<" or ";
+        cout << YELLOW"2 for Intersection"RESET;
+        cout <<" or ";
+        cout << BLUE"3 for Complement"RESET;
+        cout <<" or ";
+        cout << RED"0 for Exit"RESET;
+        cout <<" : ";
         cin >> chose;
         }
 }
 
     else if(part_number=="3"){
-        cout << "1 for Enter the elements of array , 0 for exit" <<endl;
+        cout << YELLOW<<"1 for Enter the elements of array "RESET;
+        cout << RED<<"0 for exit: "RESET ;
         int input;
         cin >> input;
         while(input!=0){
@@ -189,13 +255,21 @@ int32_t main() {
         arr[i]=elements;
         i++;
         cout << "the single number is: " << bits_manipulation(arr, i) << endl;
-        cout << "1 for Enter the elements of array , 0 for exit" <<endl;
+        cout << YELLOW<<"1 for Enter the elements of array "RESET;
+        cout << RED<<"0 for exit: "RESET ;
         cin >> input;
     }
 
     }
-    cout <<"\npress (1) for part1 or (2) for part2 or (3) for part3 or (0) for Exit: "<<endl;
+    cout << CYAN <<"\npress (1) for part1" RESET ;
+    cout <<" or ";
+    cout <<BLUE<<"(2) for part2"RESET;
+    cout <<" or ";
+    cout << YELLOW <<"(3) for part3"RESET;
+    cout <<" or ";
+    cout << RED <<"(0) for Exit: "RESET;
     cin >> part_number;
     }
+
 }
 
