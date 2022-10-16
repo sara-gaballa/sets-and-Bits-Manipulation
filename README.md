@@ -2,8 +2,7 @@
 1 Part 1: Basic Bit Operations
 You have to implement 4 bits operations, so your programe might allow user choose one of the
 following operations.
-1. getBit(int number, int position):This function returns the bit value (an integer, 0 or
-1) in the number at position position, according to its binary representation. The least
+1. getBit(int number, int position):This function returns the bit value (an integer, 0 or 1) in the number at position position, according to its binary representation. The least
 significant bit in a number is position 0.
 2. setBit(int number, int position):This function set the bit value ( to be 1) in the
 number at position position, according to its binary representation. The least significant
