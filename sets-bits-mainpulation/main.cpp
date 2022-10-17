@@ -169,7 +169,7 @@ int32_t main() {
                 if(set_input!="NULL"){
                     for (int k = 0; k<Size; k++) {
                         if(set_input==universal[k]){
-                            ArrSets[sets_number]=setBit(ArrSets[sets_number],Size-1-k);//1 2 3 4 5 //5 4 1 //   1 0 0 1 1
+                            ArrSets[sets_number]=setBit(ArrSets[sets_number],Size-1-k);
                         break;
                         }
                     }
