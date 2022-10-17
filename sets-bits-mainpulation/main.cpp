@@ -1,7 +1,7 @@
 #include <iostream>
 #include <windows.h>
 #include<bits/stdc++.h>
-#define int long long
+#define int unsigned int
 #define RESET   "\033[0m"
 #define RED     "\033[31m"      /* Red */
 #define GREEN   "\033[32m"      /* Green */
@@ -31,7 +31,7 @@ int updateBit(int number, int position, bool value){
    }
 }
 //part-2
-string* print(string arr[],int Size,int solution){
+string* print(string arr[],int Size,int solution){//printing the solution from the binary value
     string arrreturn[Size];
     int j=0;
     for(int i=0;i<Size;i++){
@@ -82,7 +82,7 @@ int32_t main() {
     cout << RED <<"(0) for Exit: "RESET;
 
     string part_number;
-    cin>>part_number;
+    cin>>part_number;//choosing the part required
 
     while(part_number!="0"){
 
@@ -108,16 +108,16 @@ int32_t main() {
     cin >> number;
     cin >> position;
     if(statement=="set"){
-    cout << setBit(number,position);}
+    cout << "OUTPUT:"<<setBit(number,position);}
     else if(statement=="clear"){
-    cout << clearBit(number,position);}
+    cout << "OUTPUT:"<<clearBit(number,position);}
     else if(statement=="get"){
-    cout << getBit(number,position);}
+    cout << "OUTPUT:"<<getBit(number,position);}
     else if(statement=="update"){
         cout<<"enter the update value"<<endl;
         bool value;
         cin>> value;
-        cout << updateBit(number,position,value);}
+        cout << "OUTPUT:"<<updateBit(number,position,value);}
     cout<<"\nchoose{";
     cout <<GREEN"get"RESET;
     cout <<", ";
@@ -161,13 +161,13 @@ int32_t main() {
         sets_number++;
         cout << "Enter the subset elements";
         cout<<RED" (if the subset is null enter NULL): "RESET;
-        for (int j = 0; j < numberofsets; j++) {
+        for (int j = 0; j < numberofsets; j++) { //reading the subsets and getting binary equivalent
            ArrSets[sets_number]=0;
            while(1){
                 string set_input;
                 cin>>set_input;
                 if(set_input!="NULL"){
-                    for (int k = 0; k<Size; k++) {
+                    for (int k = 0; k<Size; k++) {//setting the bits while reading the subsets
                         if(set_input==universal[k]){
                             ArrSets[sets_number]=setBit(ArrSets[sets_number],Size-1-k);
                         break;
